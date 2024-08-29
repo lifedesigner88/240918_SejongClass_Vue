@@ -9,6 +9,7 @@ const BASEURL = 'https://port-0-java-springboottest-m0ce3xjwfbac249f.sel4.cloudt
 const count = ref(0);
 const rawHtml = "<h1>Message: {{ count }}</h1>"
 const h1Id = ref("hi")
+const name = ref("")
 
 const changeh1Id = () => {
   if (h1Id.value === "hi")
@@ -30,6 +31,17 @@ const getUsers = async () => {
   console.log(testData.value);
 }
 
+const postUserName = async () => {
+  await fetch(`${BASEURL}/user`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify( {name : name.value} )
+  });
+  testData.value = `${name.value} "입력 성공"`;
+  console.log(testData.value);
+}
 
 </script>
 
@@ -48,6 +60,13 @@ const getUsers = async () => {
 
     <button @click="getUsers">Get User</button>
     <h1>{{ testData }}</h1>
+
+
+    <button @click="postUserName">Post User</button>
+    <input v-model="name" placeholder="추가할 이름을 입력하세요" />
+
+
+
   </div>
 
 </template>
