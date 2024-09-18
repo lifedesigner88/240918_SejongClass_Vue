@@ -3,6 +3,7 @@
 import {ref} from 'vue'
 import {firebaseApp} from "@/firebase";
 
+
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -42,9 +43,7 @@ const loginEmailPassword = async () => {
 }
 
 
-const BASEURL = 'https://port-0-java-springboottest-m0ce3xjwfbac249f.sel4.cloudtype.app'
-// const BASEURL = 'http://localhost:8080'
-
+const BASE_URL = import.meta.env.VITE_API_URL
 
 const count = ref(0);
 const rawHtml = "<h1>Message: {{ count }}</h1>"
@@ -60,7 +59,7 @@ const changeh1Id = () => {
 
 const testData = ref("")
 const getUsers = async () => {
-  const response = await fetch(`${BASEURL}/user`, {
+  const response = await fetch(`${BASE_URL}/user`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -70,7 +69,7 @@ const getUsers = async () => {
   console.log(testData.value);
 }
 const postUserName = async () => {
-  await fetch(`${BASEURL}/user`, {
+  await fetch(`${BASE_URL}/user`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -78,7 +77,6 @@ const postUserName = async () => {
     body: JSON.stringify({name: name.value})
   });
   testData.value = `${name.value} "입력 성공"`;
-  console.log(testData.value);
 }
 
 
