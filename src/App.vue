@@ -43,7 +43,7 @@ const loginEmailPassword = async () => {
 
 
 // const BASEURL = 'https://port-0-java-springboottest-m0ce3xjwfbac249f.sel4.cloudtype.app'
-const BASEURL = 'http://java-springboottest:8080'
+const BASEURL = 'https://java-springboottest:8080'
 // const BASEURL = 'http://localhost:8080'
 
 
